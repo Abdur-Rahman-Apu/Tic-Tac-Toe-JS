@@ -299,6 +299,71 @@ header {
   height: auto;
 } */
 
+/* game board part  */
+.game-part {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.final-mode {
+  font-family: "Poetsen One", sans-serif;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.player-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+}
+
+.player-score .player,
+.player-score .system {
+  height: 100%;
+}
+
+.player-score p {
+  font-family: "Poetsen One", sans-serif;
+  color: #fff;
+}
+
+.player-img,
+.system-img {
+  height: 100%;
+}
+.player-img img,
+.system-img img {
+  height: 100%;
+}
+.game-board-container {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+  gap: 5px;
+}
+.game-board-container {
+  margin-top: 10px;
+}
+.game-board-container .box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poetsen One", sans-serif;
+  font-size: 1.8rem;
+  background-color: #dfe4ea;
+}
+
+.player-name,
+.system-name {
+  text-align: center;
+  margin: 5px 0;
+}
+
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .start-point .title {
