@@ -301,7 +301,7 @@ header {
 
 /* game board part  */
 .game-part {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -364,6 +364,62 @@ header {
   margin: 5px 0;
 }
 
+/* winning-msg part  */
+.winner-part {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.winning-msg {
+  font-family: "Poetsen One", sans-serif;
+  font-size: 2.2rem;
+  color: #fff;
+}
+
+.winner-part > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.play-again-btn,
+.reset-btn {
+  font-family: "Poetsen One", sans-serif;
+}
+
+.play-again-btn {
+  background-image: linear-gradient(
+    to left bottom,
+    #6ff7e8,
+    #4bd8dc,
+    #2fbacc,
+    #209cb8,
+    #1f7ea1
+  );
+  box-shadow: 3px 3px 3px #1f7ea1;
+}
+
+.reset-btn {
+  color: #fff;
+  background: #e43a15;
+  background: -webkit-linear-gradient(to right, #e65245, #e43a15);
+  background: linear-gradient(to right, #e65245, #e43a15);
+  box-shadow: 3px 3px 3px red;
+}
+
+.play-again-btn:hover {
+  color: #fff;
+  box-shadow: none;
+}
+
+.reset-btn:hover {
+  box-shadow: none;
+}
+
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .start-point .title {
@@ -399,6 +455,11 @@ header {
 
   .toss-part {
     margin: 0;
+  }
+
+  .play-again-btn,
+  .reset-btn {
+    font-size: 1.3rem;
   }
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */
