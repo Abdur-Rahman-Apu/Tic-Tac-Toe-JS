@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(
+    to right top,
+    #051937,
+    #004064,
+    #006b8e,
+    #0099b0,
+    #22c9c9
+  );
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+button {
+  padding: 15px 30px;
+  border-radius: 25px;
+  border: 1px solid transparent;
+  outline: none;
+  transition: 1s;
+  cursor: pointer;
+}
+
+header {
+  margin: 5px 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  position: relative;
+}
+
+.logo img {
+  width: 30vw;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.left-side {
+  min-height: calc(100vh - 50%);
+}
+
+.left-side .title {
+  font-family: "Poetsen One", sans-serif;
+  font-size: 12.5vw;
+  margin-bottom: 35px;
+  margin-left: 10px;
+  color: white;
+  line-height: 4.5rem;
+}
+
+.toss-btn,
+.start-btn,
+.head-btn,
+.tail-btn {
+  font-family: "Poetsen One", sans-serif;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+.toss-btn,
+.head-btn {
+  background-color: #92eded;
+  margin: 0 10px;
+  box-shadow: 3px 3px 5px black;
+}
+
+.toss-btn:hover,
+.head-btn:hover {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #92eded;
+}
+.start-btn,
+.tail-btn {
+  background-color: #051937;
+  color: #fff;
+  box-shadow: 2px 2px 5px #92eded;
+}
+
+.start-btn:hover,
+.tail-btn:hover {
+  background-color: transparent;
+  border: 1px solid #92eded;
+}
+
+.right-side {
+  margin: 20px 0;
+}
+
+.toss-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.coin-container {
+  height: 300px;
+  width: 300px;
+  transition: 1s;
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coin-inner {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transition: transform 3s;
+  transform-style: preserve-3d;
+}
+
+/* .coin-container:hover .coin-inner {
+  transform: rotateX(180deg);
+} */
+
+.coin-front-side,
+.coin-back-side {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffd700;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-family: "Exo", sans-serif;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.coin-back-side {
+  transform: rotateX(180deg);
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .left-side .title {
+    font-size: 10.5vw;
+    line-height: 7.5rem;
+  }
+  .start-btn,
+  .toss-btn,
+  .head-btn,
+  .tail-btn {
+    font-size: 1.5rem;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  body {
+    overflow: hidden;
+  }
+  .logo img {
+    width: 10vw;
+  }
+
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .left-side,
+  .right-side {
+    flex-basis: 45%;
+  }
+  .left-side .title {
+    font-size: 3.5rem;
+    line-height: 5rem;
+  }
+
+  .start-btn,
+  .toss-btn,
+  .head-btn,
+  .tail-btn {
+    font-size: 1.2rem;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}

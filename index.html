@@ -5,10 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&Exo:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <header>
+        <div class="logo">
+            <img src="./assets/images/tic-tac-toe-removebg-preview.png" alt="tic tac toe game image">
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="left-side">
+            <p class="title">Let's Play the <br> Tic-tac-toe <br> Game!</p>
+            <button class="toss-btn">Toss</button>
+            <button class="start-btn">Start a new game</button>
+        </div>
+        <div class="right-side">
+            <div class="toss-container">
+                <div class="coin-container">
+                    <div class="coin-inner">
+                        <div class="coin-front-side">H</div>
+                        <div class="coin-back-side">T</div>
+                    </div>
+                </div>
+                <div class="toss-mode">
+                    <button class="head-btn">Head</button>
+                    <button class="tail-btn">Tail</button>
+                </div>
+            </div>
+            <div class="game-container"></div>
+        </div>
+    </section>
 
 
     <script src="index.js" type="module"></script>
