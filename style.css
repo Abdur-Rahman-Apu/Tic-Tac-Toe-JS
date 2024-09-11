@@ -45,7 +45,7 @@ header {
 }
 
 .start-point {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -91,7 +91,6 @@ header {
 .start-btn,
 .tail-btn,
 .edit-mode-btn {
-  /* background-color: #051937; */
   background: linear-gradient(
     to bottom,
     #8de9d5,
@@ -144,9 +143,8 @@ header {
 }
 
 /* .coin-container:hover .coin-inner {
-  
   animation: rotation 1s linear infinite;
-}
+} */
 
 @keyframes rotation {
   25% {
@@ -161,7 +159,7 @@ header {
   100% {
     transform: rotateX(360deg);
   }
-} */
+}
 
 .coin-front-side,
 .coin-back-side {
@@ -171,7 +169,6 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: #ffd700; */
   background-image: radial-gradient(
     circle,
     #f3fbfc,
@@ -366,7 +363,7 @@ header {
 
 /* winning-msg part  */
 .winner-part {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-items: center;
   align-items: center;
