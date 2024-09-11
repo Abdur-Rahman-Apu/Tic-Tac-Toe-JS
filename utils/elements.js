@@ -10,12 +10,13 @@ const coinFront = document.querySelector(".coin-front-side");
 const coinBack = document.querySelector(".coin-back-side");
 
 const editContainer = document.querySelector(".edit-part");
-const tossResult = document.querySelector(".toss-result");
+const tossResultInfo = document.querySelector(".toss-result");
 const nameField = document.querySelector("#name");
 const gameModeName = document.querySelector(".game-mode-name");
 const modesContainer = document.querySelector(".modes");
 const editModeBtn = document.querySelector(".edit-mode-btn");
 
+const gamePartContainer = document.querySelector(".game-part");
 const finalModeName = document.querySelector(".final-mode-name");
 const player = document.querySelector(".player");
 const system = document.querySelector(".system");
@@ -36,6 +37,7 @@ export {
   finalModeName,
   gameBoardContainer,
   gameModeName,
+  gamePartContainer,
   headBtn,
   modesContainer,
   nameField,
@@ -48,6 +50,6 @@ export {
   system,
   tailBtn,
   tossContainer,
-  tossResult,
+  tossResultInfo,
   winningMsg,
 };

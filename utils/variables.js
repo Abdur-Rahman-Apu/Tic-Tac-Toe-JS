@@ -5,6 +5,7 @@ const gameValues = {
   isTossWon: null,
   name: "Player 1",
   mode: "Easy",
+  isModesOpen: false,
   turn: null,
 };
 

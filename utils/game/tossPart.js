@@ -2,8 +2,11 @@ import {
   coinBack,
   coinFront,
   coinInner,
+  editContainer,
   headBtn,
   tailBtn,
+  tossContainer,
+  tossResultInfo,
 } from "../elements.js";
 import gameValues from "../variables.js";
 
@@ -26,17 +29,21 @@ const setTossResult = (coin) => {
       console.log("Tail");
       coinFront.style.transform = "rotateX(180deg)";
       coinBack.style.transform = "none";
-      gameValues.coin === "t" &&
-        tossResult === 1 &&
-        (gameValues.isTossWon = true);
+      gameValues.coin === "t" && (gameValues.isTossWon = true);
+
+      gameValues.coin === "t"
+        ? (tossResultInfo.textContent = "You won the toss")
+        : (tossResultInfo.textContent = "You lost the toss");
     } else {
       //head
       console.log("head");
       coinBack.style.transform = "rotateX(180deg)";
       coinFront.style.transform = "none";
-      gameValues.coin === "h" &&
-        tossResult === 0 &&
-        (gameValues.isTossWon = true);
+      gameValues.coin === "h" && (gameValues.isTossWon = true);
+
+      gameValues.coin === "h"
+        ? (tossResultInfo.textContent = "You won the toss")
+        : (tossResultInfo.textContent = "You lost the toss");
     }
 
     tossContainer.style.display = "none";
