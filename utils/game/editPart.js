@@ -1,12 +1,15 @@
 import {
   editContainer,
   editModeBtn,
+  finalModeName,
   gameModeName,
   gamePartContainer,
   modesContainer,
   nameField,
+  playerName,
 } from "../elements.js";
 import gameValues from "../variables.js";
+import setActiveBorder from "./activeBorder.js";
 
 const editPart = () => {
   nameField.addEventListener("keyup", (e) => {
@@ -42,6 +45,9 @@ const editPart = () => {
     } else {
       editContainer.style.display = "none";
       gamePartContainer.style.display = "flex";
+      finalModeName.textContent = gameValues.mode;
+      playerName.textContent = gameValues.name;
+      setActiveBorder();
     }
   });
 };

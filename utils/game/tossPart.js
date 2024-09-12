@@ -14,6 +14,20 @@ const decideTossResult = () => {
   return Math.floor(Math.random() * 2);
 };
 
+const updateDomAfterTossWon = (coin) => {
+  if (gameValues.coin === coin) {
+    gameValues.playerSymbol = "O";
+    gameValues.AISymbol = "X";
+    gameValues.turn = true;
+    tossResultInfo.textContent = "You won the toss";
+  } else {
+    gameValues.playerSymbol = "X";
+    gameValues.AISymbol = "O";
+    gameValues.turn = false;
+    tossResultInfo.textContent = "You lost the toss";
+  }
+};
+
 const setTossResult = (coin) => {
   coinInner.style.animation = "rotation 1s linear infinite";
   gameValues.coin = coin;
@@ -29,21 +43,13 @@ const setTossResult = (coin) => {
       console.log("Tail");
       coinFront.style.transform = "rotateX(180deg)";
       coinBack.style.transform = "none";
-      gameValues.coin === "t" && (gameValues.isTossWon = true);
-
-      gameValues.coin === "t"
-        ? (tossResultInfo.textContent = "You won the toss")
-        : (tossResultInfo.textContent = "You lost the toss");
+      updateDomAfterTossWon("t");
     } else {
       //head
       console.log("head");
       coinBack.style.transform = "rotateX(180deg)";
       coinFront.style.transform = "none";
-      gameValues.coin === "h" && (gameValues.isTossWon = true);
-
-      gameValues.coin === "h"
-        ? (tossResultInfo.textContent = "You won the toss")
-        : (tossResultInfo.textContent = "You lost the toss");
+      updateDomAfterTossWon("h");
     }
 
     tossContainer.style.display = "none";

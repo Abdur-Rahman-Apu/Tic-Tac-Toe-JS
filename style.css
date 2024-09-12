@@ -25,6 +25,9 @@ button {
   transition: 1s;
   cursor: pointer;
 }
+div[disabled] {
+  pointer-events: none;
+}
 
 header {
   width: fit-content;
@@ -45,7 +48,7 @@ header {
 }
 
 .start-point {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -298,7 +301,7 @@ header {
 
 /* game board part  */
 .game-part {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -332,7 +335,15 @@ header {
 .player-img,
 .system-img {
   height: 100%;
+  border: 3px solid transparent;
+  /* border: 3px solid #33d9b2; */
+  border-radius: 50%;
 }
+
+/* .player .player-name {
+  color: #55e6c1;
+} */
+
 .player-img img,
 .system-img img {
   height: 100%;

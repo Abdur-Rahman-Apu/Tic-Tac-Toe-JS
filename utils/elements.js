@@ -20,7 +20,10 @@ const gamePartContainer = document.querySelector(".game-part");
 const finalModeName = document.querySelector(".final-mode-name");
 const player = document.querySelector(".player");
 const system = document.querySelector(".system");
-const playerName = document.querySelector(".player-name");
+const playerImgContainer = document.querySelector(".player-img");
+const systemImgContainer = document.querySelector(".system-img");
+const playerName = document.querySelector(".player .player-name");
+const systemName = document.querySelector(".system-name");
 
 const gameBoardContainer = document.querySelector(".game-board-container");
 
@@ -43,11 +46,14 @@ export {
   nameField,
   playAgainBtn,
   player,
+  playerImgContainer,
   playerName,
   resetBtn,
   startBtn,
   startPointContainer,
   system,
+  systemImgContainer,
+  systemName,
   tailBtn,
   tossContainer,
   tossResultInfo,
