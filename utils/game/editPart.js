@@ -44,6 +44,9 @@ const editPart = () => {
     if (!gameValues.name) {
       alert("Please enter valid name");
     } else {
+      if (gameValues.mode === "Medium") {
+        gameValues["aiMode"] = 1;
+      }
       editContainer.style.display = "none";
       gamePartContainer.style.display = "flex";
       finalModeName.textContent = gameValues.mode;
