@@ -1,5 +1,6 @@
 import {
   gameBoardContainer,
+  gamePartContainer,
   winnerPartContainer,
   winningImg,
   winningMsg,
@@ -7,6 +8,8 @@ import {
 import { gameValues } from "../variables.js";
 import setActiveBorder from "./activeBorder.js";
 import easyMode from "./mode/easy.js";
+import hardMode from "./mode/hardMode.js";
+import mediumMode from "./mode/medium.js";
 
 const decideOfDisableDiv = (isDisable, elm) => {
   if (isDisable) {
@@ -16,29 +19,30 @@ const decideOfDisableDiv = (isDisable, elm) => {
   }
 };
 
-// const isMatched = (selectedValues) => {
-//   gameValues.possibleOutcome.findIndex(
-//     (item) => item.toString() === selectedValues.toString()
-//   );
-
-//   if (findIndex !== -1) {
-//     return false;
-//   } else {
-//     return true;
-//   }
-// };
-
 const updateDomAfterWin = () => {
   if (gameValues.isWinner) {
     winningMsg.textContent = "You Won!";
     winningImg.src = "assets/images/celebration.png";
-  } else {
+  } else if (gameValues.isWinner === false) {
     winningMsg.textContent = "You Lost!";
     winningImg.src = "assets/images/lose.png";
+  } else {
+    winningMsg.textContent = "Tie!";
+    winningImg.src = "assets/images/celebration.png";
   }
 
-  gameBoardContainer.style.display = "none";
+  gamePartContainer.style.display = "none";
   winnerPartContainer.style.display = "flex";
+
+  if (gameBoardContainer.getAttribute("disabled")) {
+    gameBoardContainer.removeAttribute("disabled");
+  }
+  Array.from(gameBoardContainer.children).forEach((elm) => {
+    if (elm.getAttribute("disabled")) {
+      elm.removeAttribute("disabled");
+    }
+    elm.textContent = "";
+  });
 };
 
 const isWinner = (player) => {
@@ -54,36 +58,51 @@ const decideWinner = (isPlayer) => {
 
   if (emptyBoxes.length === 1) {
     console.log("checking draw");
+    updateDomAfterWin();
+    return true;
   }
   if (isPlayer && player.length > 2) {
     console.log("player with length > 2");
+    console.log(isWinner(player), "is winner");
     if (isWinner(player)) {
       gameValues.isWinner = true;
       updateDomAfterWin();
+      return true;
     }
   }
 
   if (!isPlayer && AI.length > 2) {
     console.log("AI with length > 2");
+    console.log(isWinner(AI), "is winner");
     if (isWinner(AI)) {
       gameValues.isWinner = false;
       updateDomAfterWin();
+      return true;
     }
   }
 };
 
-const autoPlay = () => {
-  const { AISymbol } = gameValues;
-  const value = easyMode();
+export const autoPlay = () => {
+  const { AISymbol, mode } = gameValues;
+  const value =
+    mode.toLowerCase() === "easy"
+      ? easyMode()
+      : mode.toLowerCase() === "medium"
+      ? mediumMode()
+      : hardMode();
+
   const targetElm = gameBoardContainer.querySelector(`div:nth-child(${value})`);
+  targetElm.textContent = AISymbol;
+
   const boxNumber = +targetElm.dataset.box;
   gameValues.AI.push(boxNumber);
 
-  decideWinner();
+  if (gameValues.AI.length > 2 && decideWinner(false)) return;
+
   decideOfDisableDiv(true, targetElm);
   decideOfDisableDiv(false, gameBoardContainer);
-  console.log(targetElm);
-  targetElm.textContent = AISymbol;
+  //   console.log(targetElm);
+
   gameValues.turn = true;
   setActiveBorder();
 };
@@ -97,6 +116,8 @@ const play = () => {
       const targetElm = e.target;
       const boxNumber = targetElm.dataset.box;
 
+      targetElm.textContent = gameValues.playerSymbol;
+
       gameValues.player.push(+boxNumber);
       //   find the box into the empty box array
       const emptyBoxIndex = gameValues.emptyBoxes.findIndex(
@@ -107,11 +128,10 @@ const play = () => {
       console.log(gameValues.emptyBoxes, "Player before");
       gameValues.emptyBoxes.splice(emptyBoxIndex, 1);
 
-      decideWinner();
+      if (gameValues.player.length > 2 && decideWinner(true)) return;
 
       console.log(gameValues.emptyBoxes, "Player After");
 
-      targetElm.textContent = gameValues.playerSymbol;
       gameValues.turn = false;
 
       decideOfDisableDiv(true, parentElm);

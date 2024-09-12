@@ -19,11 +19,13 @@ const updateDomAfterTossWon = (coin) => {
     gameValues.playerSymbol = "O";
     gameValues.AISymbol = "X";
     gameValues.turn = true;
+    gameValues.isTossWon = true;
     tossResultInfo.textContent = "You won the toss";
   } else {
     gameValues.playerSymbol = "X";
     gameValues.AISymbol = "O";
     gameValues.turn = false;
+    gameValues.isTossWon = false;
     tossResultInfo.textContent = "You lost the toss";
   }
 };

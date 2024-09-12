@@ -10,6 +10,7 @@ import {
 } from "../elements.js";
 import { gameValues } from "../variables.js";
 import setActiveBorder from "./activeBorder.js";
+import { autoPlay } from "./play.js";
 
 const editPart = () => {
   nameField.addEventListener("keyup", (e) => {
@@ -48,6 +49,7 @@ const editPart = () => {
       finalModeName.textContent = gameValues.mode;
       playerName.textContent = gameValues.name;
       setActiveBorder();
+      !isTossWon && autoPlay();
     }
   });
 };
