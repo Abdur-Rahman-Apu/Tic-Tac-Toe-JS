@@ -1,4 +1,4 @@
-import gameValues from "../../variables.js";
+import { gameValues } from "../../variables.js";
 
 const easyMode = () => {
   const { emptyBoxes } = gameValues;

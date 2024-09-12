@@ -8,7 +8,7 @@ import {
   tossContainer,
   tossResultInfo,
 } from "../elements.js";
-import gameValues from "../variables.js";
+import { gameValues } from "../variables.js";
 
 const decideTossResult = () => {
   return Math.floor(Math.random() * 2);

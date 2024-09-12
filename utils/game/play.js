@@ -1,5 +1,10 @@
-import { gameBoardContainer, winningImg, winningMsg } from "../elements.js";
-import gameValues from "../variables.js";
+import {
+  gameBoardContainer,
+  winnerPartContainer,
+  winningImg,
+  winningMsg,
+} from "../elements.js";
+import { gameValues } from "../variables.js";
 import setActiveBorder from "./activeBorder.js";
 import easyMode from "./mode/easy.js";
 
@@ -31,6 +36,9 @@ const updateDomAfterWin = () => {
     winningMsg.textContent = "You Lost!";
     winningImg.src = "assets/images/lose.png";
   }
+
+  gameBoardContainer.style.display = "none";
+  winnerPartContainer.style.display = "flex";
 };
 
 const isWinner = (player) => {
@@ -70,6 +78,8 @@ const autoPlay = () => {
   const targetElm = gameBoardContainer.querySelector(`div:nth-child(${value})`);
   const boxNumber = +targetElm.dataset.box;
   gameValues.AI.push(boxNumber);
+
+  decideWinner();
   decideOfDisableDiv(true, targetElm);
   decideOfDisableDiv(false, gameBoardContainer);
   console.log(targetElm);
@@ -96,6 +106,8 @@ const play = () => {
       // remove the selected box number
       console.log(gameValues.emptyBoxes, "Player before");
       gameValues.emptyBoxes.splice(emptyBoxIndex, 1);
+
+      decideWinner();
 
       console.log(gameValues.emptyBoxes, "Player After");
 

@@ -8,7 +8,7 @@ import {
   nameField,
   playerName,
 } from "../elements.js";
-import gameValues from "../variables.js";
+import { gameValues } from "../variables.js";
 import setActiveBorder from "./activeBorder.js";
 
 const editPart = () => {

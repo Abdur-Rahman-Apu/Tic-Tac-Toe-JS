@@ -27,10 +27,11 @@ const systemName = document.querySelector(".system-name");
 
 const gameBoardContainer = document.querySelector(".game-board-container");
 
+const winnerPartContainer = document.querySelector(".winner-part");
 const winningMsg = document.querySelector(".winning-msg .win-msg");
 const winningImg = document.querySelector(".winning-msg img");
 const playAgainBtn = document.querySelector(".play-again-btn");
-const resetBtn = document.querySelector(".reset-btn");
+const exitBtn = document.querySelector(".exit-btn");
 
 export {
   coinBack,
@@ -38,6 +39,7 @@ export {
   coinInner,
   editContainer,
   editModeBtn,
+  exitBtn,
   finalModeName,
   gameBoardContainer,
   gameModeName,
@@ -49,7 +51,6 @@ export {
   player,
   playerImgContainer,
   playerName,
-  resetBtn,
   startBtn,
   startPointContainer,
   system,
@@ -58,6 +59,7 @@ export {
   tailBtn,
   tossContainer,
   tossResultInfo,
+  winnerPartContainer,
   winningImg,
   winningMsg,
 };

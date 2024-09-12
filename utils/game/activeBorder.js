@@ -1,5 +1,5 @@
 import { playerImgContainer, systemImgContainer } from "../elements.js";
-import gameValues from "../variables.js";
+import { gameValues } from "../variables.js";
 
 const setActiveBorder = () => {
   const active = { border: "3px solid #33d9b2" };
