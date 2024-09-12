@@ -27,7 +27,8 @@ const systemName = document.querySelector(".system-name");
 
 const gameBoardContainer = document.querySelector(".game-board-container");
 
-const winningMsg = document.querySelector(".winning-msg");
+const winningMsg = document.querySelector(".winning-msg .win-msg");
+const winningImg = document.querySelector(".winning-msg img");
 const playAgainBtn = document.querySelector(".play-again-btn");
 const resetBtn = document.querySelector(".reset-btn");
 
@@ -57,5 +58,6 @@ export {
   tailBtn,
   tossContainer,
   tossResultInfo,
+  winningImg,
   winningMsg,
 };

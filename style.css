@@ -301,7 +301,7 @@ header {
 
 /* game board part  */
 .game-part {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -374,7 +374,7 @@ header {
 
 /* winning-msg part  */
 .winner-part {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
@@ -385,6 +385,13 @@ header {
   font-family: "Poetsen One", sans-serif;
   font-size: 2.2rem;
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.winning-msg img {
+  width: 25vw;
 }
 
 .winner-part > div {
@@ -440,6 +447,10 @@ header {
   .tail-btn {
     font-size: 1.5rem;
   }
+
+  .winning-msg img {
+    width: 10vw;
+  }
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
@@ -463,6 +474,10 @@ header {
 
   .toss-part {
     margin: 0;
+  }
+
+  .winning-msg img {
+    width: 8vw;
   }
 
   .play-again-btn,
