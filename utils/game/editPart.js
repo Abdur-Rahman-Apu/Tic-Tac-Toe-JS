@@ -20,24 +20,37 @@ const editPart = () => {
   });
 
   gameModeName.addEventListener("click", () => {
+    const decreaseHeightStyle = {
+      display: "none",
+      height: 0,
+    };
+    const increaseHeightStyle = {
+      display: "block",
+      height: "auto",
+    };
+
     if (gameValues.isModesOpen) {
-      modesContainer.style.height = 0;
-      modesContainer.style.display = "none";
+      // modesContainer.style.height = 0;
+      // modesContainer.style.display = "none";
+      Object.assign(modesContainer.style, decreaseHeightStyle);
       gameValues.isModesOpen = false;
     } else {
-      modesContainer.style.height = "auto";
-      modesContainer.style.display = "block";
+      // modesContainer.style.height = "auto";
+      // modesContainer.style.display = "block";
+      Object.assign(modesContainer.style, increaseHeightStyle);
       gameValues.isModesOpen = true;
     }
   });
 
   modesContainer.addEventListener("click", (e) => {
-    console.log(e.target.textContent);
-    gameModeName.textContent = e.target.textContent;
-    gameValues.mode = e.target.textContent;
-    modesContainer.style.height = 0;
-    modesContainer.style.display = "none";
-    gameValues.isModesOpen = false;
+    console.log(e.target);
+    if (e.target.tagName === "P") {
+      gameModeName.textContent = e.target.textContent;
+      gameValues.mode = e.target.textContent;
+      modesContainer.style.height = 0;
+      modesContainer.style.display = "none";
+      gameValues.isModesOpen = false;
+    }
   });
 
   editModeBtn.addEventListener("click", () => {

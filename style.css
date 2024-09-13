@@ -48,7 +48,7 @@ header {
 }
 
 .start-point {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -63,6 +63,7 @@ header {
   color: white;
   line-height: 4.5rem;
   text-align: center;
+  text-shadow: 4px 4px 4px #485550;
 }
 
 .start-btn,
@@ -118,7 +119,7 @@ header {
 
 .toss-part {
   margin: 20px 0;
-  display: none;
+  display: flex;
 }
 
 .toss-container {
@@ -181,6 +182,7 @@ header {
     #acada8
   );
   border-radius: 50%;
+  box-shadow: 3px 3px 8px #292c2b;
   font-size: 1.5rem;
   font-family: "Exo", sans-serif;
   backface-visibility: hidden;
@@ -218,9 +220,13 @@ header {
 
 .edit-name input {
   padding: 8px;
+  font-family: "#fd79a8", sans-serif;
   width: 100%;
-  border-radius: 20px;
+  height: 100%;
+  border-radius: 5px;
   border: 1px solid transparent;
+  outline: none;
+  background-color: #afe8d8;
 }
 
 .edit-name input::placeholder {
@@ -228,7 +234,8 @@ header {
 }
 .edit-mode-btn {
   font-family: "Poetsen One", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  padding: 10px 25px;
 }
 
 .game-mode {
@@ -252,10 +259,10 @@ header {
   color: #fff;
   position: relative;
   color: #ffda79;
+  cursor: pointer;
 }
 
 .game-mode-name::after {
-  position: absolute;
   content: "→";
   margin-left: 3px;
 }
@@ -269,12 +276,12 @@ header {
   color: #2c2c54;
   border-radius: 10px;
   position: absolute;
-  right: -16%;
+  right: -20%;
   top: 8px;
-  /* transform: translate(-50%, -50%); */
   height: 0;
   display: none;
   transition: 1s;
+  overflow: hidden;
 }
 
 .modes p:nth-child(2) {
@@ -312,6 +319,7 @@ header {
   font-family: "Poetsen One", sans-serif;
   font-size: 1.4rem;
   color: #fff;
+  text-shadow: 3px 3px 8px #292c2b;
 }
 
 .player-score {
@@ -330,19 +338,15 @@ header {
 .player-score p {
   font-family: "Poetsen One", sans-serif;
   color: #fff;
+  text-shadow: 3px 3px 8px #292c2b;
 }
 
 .player-img,
 .system-img {
   height: 100%;
   border: 3px solid transparent;
-  /* border: 3px solid #33d9b2; */
   border-radius: 50%;
 }
-
-/* .player .player-name {
-  color: #55e6c1;
-} */
 
 .player-img img,
 .system-img img {
@@ -364,12 +368,14 @@ header {
   font-family: "Poetsen One", sans-serif;
   font-size: 1.8rem;
   background-color: #dfe4ea;
+  box-shadow: 3px 3px 8px #292c2b;
 }
 
 .player-name,
 .system-name {
   text-align: center;
   margin: 5px 0;
+  text-transform: capitalize;
 }
 
 /* winning-msg part  */

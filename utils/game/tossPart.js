@@ -60,11 +60,17 @@ const setTossResult = (coin) => {
 };
 
 const tossPart = () => {
-  headBtn.addEventListener("click", () => {
+  headBtn.addEventListener("click", (e) => {
+    tailBtn.style.display = "none";
+    e.target.setAttribute("disabled", true);
+    e.target.style.cursor = "not-allowed";
     setTossResult("h");
   });
 
-  tailBtn.addEventListener("click", () => {
+  tailBtn.addEventListener("click", (e) => {
+    headBtn.style.display = "none";
+    e.target.setAttribute("disabled", true);
+    e.target.style.cursor = "not-allowed";
     setTossResult("t");
   });
 };

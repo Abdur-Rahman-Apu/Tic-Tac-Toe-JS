@@ -2,8 +2,10 @@ import deepCopy from "../deepCopy.js";
 import {
   exitBtn,
   gamePartContainer,
+  headBtn,
   playAgainBtn,
   startPointContainer,
+  tailBtn,
   winnerPartContainer,
 } from "../elements.js";
 import { gameValues, initialValues, resetValues } from "../variables.js";
@@ -36,6 +38,16 @@ const endPart = () => {
     });
 
     winnerPartContainer.style.display = "none";
+
+    headBtn.style.display = "none";
+    headBtn.removeAttribute("disabled");
+    headBtn.style.cursor = "pointer";
+    tailBtn.style.display = "none";
+    tailBtn.removeAttribute("disabled");
+    tailBtn.style.cursor = "pointer";
+
+    gameModeName.textContent = "Easy";
+
     startPointContainer.style.display = "flex";
   });
 };
