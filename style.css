@@ -35,7 +35,7 @@ header {
 }
 
 .logo img {
-  width: 30vw;
+  width: 40vw;
   height: 100%;
   object-fit: contain;
 }
@@ -44,11 +44,11 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 260px);
 }
 
 .start-point {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -60,7 +60,7 @@ header {
   font-size: 12.5vw;
   margin-bottom: 35px;
   margin-left: 10px;
-  color: white;
+  color: #fff;
   line-height: 4.5rem;
   text-align: center;
   text-shadow: 4px 4px 4px #485550;
@@ -118,8 +118,8 @@ header {
 /* toss part  */
 
 .toss-part {
+  display: none;
   margin: 20px 0;
-  display: flex;
 }
 
 .toss-container {
@@ -465,6 +465,10 @@ header {
   }
   .logo img {
     width: 10vw;
+  }
+
+  .container {
+    height: calc(100vh - 160px);
   }
 
   .start-point .title {

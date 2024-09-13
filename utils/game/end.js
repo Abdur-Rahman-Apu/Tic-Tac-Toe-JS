@@ -1,6 +1,7 @@
 import deepCopy from "../deepCopy.js";
 import {
   exitBtn,
+  gameModeName,
   gamePartContainer,
   headBtn,
   playAgainBtn,
@@ -39,10 +40,10 @@ const endPart = () => {
 
     winnerPartContainer.style.display = "none";
 
-    headBtn.style.display = "none";
+    headBtn.style.display = "inline-block";
     headBtn.removeAttribute("disabled");
     headBtn.style.cursor = "pointer";
-    tailBtn.style.display = "none";
+    tailBtn.style.display = "inline-block";
     tailBtn.removeAttribute("disabled");
     tailBtn.style.cursor = "pointer";
 
