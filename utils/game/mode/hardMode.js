@@ -1,4 +1,4 @@
-import aiDecide from "./AiDecide";
+import aiDecide from "./AiDecide.js";
 
 const hardMode = () => {
   return aiDecide();

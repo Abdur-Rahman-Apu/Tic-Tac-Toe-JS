@@ -47,16 +47,27 @@ const updateDomAfterWin = () => {
 
 const isWinner = (player) => {
   const playerValues = [...player].sort();
+  console.log(playerValues, "player values");
 
-  return gameValues.possibleOutcome.some(
-    (item) => item.toString() === playerValues.toString()
-  );
+  return gameValues.possibleOutcome.some((item) => {
+    let matched = 0;
+    for (const value of item) {
+      playerValues.includes(value) && matched++;
+    }
+    console.log(matched, "matched");
+    if (matched === 3) {
+      return true;
+    } else {
+      matched = 0;
+    }
+  });
 };
 
 const decideWinner = (isPlayer) => {
   const { player, AI, emptyBoxes } = gameValues;
 
-  if (emptyBoxes.length === 1) {
+  console.log(isPlayer, "isPlayer");
+  if (!emptyBoxes.length) {
     console.log("checking draw");
     updateDomAfterWin();
     return true;
@@ -109,7 +120,10 @@ export const autoPlay = () => {
 
 const play = () => {
   gameBoardContainer.addEventListener("click", (e) => {
-    const isDisabled = e.target.getAttribute("disabled");
+    const isDisabled = e.target.textContent;
+
+    console.log(e.target, "disabled");
+    console.log(!isDisabled, "is not disabled");
 
     if (!isDisabled) {
       const parentElm = e.currentTarget;
@@ -128,6 +142,10 @@ const play = () => {
       console.log(gameValues.emptyBoxes, "Player before");
       gameValues.emptyBoxes.splice(emptyBoxIndex, 1);
 
+      console.log(
+        gameValues.player.length > 2 && decideWinner(true),
+        "decide winner player"
+      );
       if (gameValues.player.length > 2 && decideWinner(true)) return;
 
       console.log(gameValues.emptyBoxes, "Player After");
