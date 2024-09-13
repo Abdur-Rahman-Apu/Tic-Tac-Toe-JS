@@ -47,14 +47,14 @@ const updateDomAfterWin = () => {
 
 const isWinner = (player) => {
   const playerValues = [...player].sort();
-  console.log(playerValues, "player values");
+  // console.log(playerValues, "player values");
 
   return gameValues.possibleOutcome.some((item) => {
     let matched = 0;
     for (const value of item) {
       playerValues.includes(value) && matched++;
     }
-    console.log(matched, "matched");
+    // console.log(matched, "matched");
     if (matched === 3) {
       return true;
     } else {
@@ -74,7 +74,7 @@ const decideWinner = (isPlayer) => {
   }
   if (isPlayer && player.length > 2) {
     console.log("player with length > 2");
-    console.log(isWinner(player), "is winner");
+    // console.log(isWinner(player), "is winner");
     if (isWinner(player)) {
       gameValues.isWinner = true;
       updateDomAfterWin();
@@ -102,11 +102,14 @@ export const autoPlay = () => {
       ? mediumMode()
       : hardMode();
 
+  console.log(value, "value");
   const targetElm = gameBoardContainer.querySelector(`div:nth-child(${value})`);
   targetElm.textContent = AISymbol;
 
   const boxNumber = +targetElm.dataset.box;
   gameValues.AI.push(boxNumber);
+
+  removeFromEmptySlots(boxNumber);
 
   if (gameValues.AI.length > 2 && decideWinner(false)) return;
 
@@ -118,12 +121,27 @@ export const autoPlay = () => {
   setActiveBorder();
 };
 
+const removeFromEmptySlots = (slot) => {
+  //   find the box into the empty box array
+  const emptyBoxIndex = gameValues.emptyBoxes.findIndex(
+    (value) => value == slot
+  );
+
+  console.log(slot, "remove value");
+  console.log(emptyBoxIndex, "remove index");
+
+  // remove the selected box number
+  console.log(gameValues.emptyBoxes, "Player before");
+  gameValues.emptyBoxes.splice(emptyBoxIndex, 1);
+  console.log(gameValues.emptyBoxes, "Player after");
+};
+
 const play = () => {
   gameBoardContainer.addEventListener("click", (e) => {
     const isDisabled = e.target.textContent;
 
-    console.log(e.target, "disabled");
-    console.log(!isDisabled, "is not disabled");
+    // console.log(e.target, "disabled");
+    // console.log(!isDisabled, "is not disabled");
 
     if (!isDisabled) {
       const parentElm = e.currentTarget;
@@ -133,14 +151,8 @@ const play = () => {
       targetElm.textContent = gameValues.playerSymbol;
 
       gameValues.player.push(+boxNumber);
-      //   find the box into the empty box array
-      const emptyBoxIndex = gameValues.emptyBoxes.findIndex(
-        (value) => value == boxNumber
-      );
 
-      // remove the selected box number
-      console.log(gameValues.emptyBoxes, "Player before");
-      gameValues.emptyBoxes.splice(emptyBoxIndex, 1);
+      removeFromEmptySlots(boxNumber);
 
       console.log(
         gameValues.player.length > 2 && decideWinner(true),

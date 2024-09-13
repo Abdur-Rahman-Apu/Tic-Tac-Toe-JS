@@ -45,14 +45,14 @@ const editPart = () => {
       alert("Please enter valid name");
     } else {
       if (gameValues.mode === "Medium") {
-        gameValues["aiMode"] = 1;
+        gameValues["aiMode"] = 2;
       }
       editContainer.style.display = "none";
       gamePartContainer.style.display = "flex";
       finalModeName.textContent = gameValues.mode;
       playerName.textContent = gameValues.name;
       setActiveBorder();
-      !isTossWon && autoPlay();
+      !gameValues.isTossWon && autoPlay();
     }
   });
 };
