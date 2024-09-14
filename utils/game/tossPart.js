@@ -8,6 +8,7 @@ import {
   tossContainer,
   tossResultInfo,
 } from "../elements.js";
+import { tossSound } from "../sounds.js";
 import { gameValues } from "../variables.js";
 
 const decideTossResult = () => {
@@ -61,6 +62,7 @@ const setTossResult = (coin) => {
 
 const tossPart = () => {
   headBtn.addEventListener("click", (e) => {
+    tossSound();
     tailBtn.style.display = "none";
     e.target.setAttribute("disabled", true);
     e.target.style.cursor = "not-allowed";
@@ -68,6 +70,7 @@ const tossPart = () => {
   });
 
   tailBtn.addEventListener("click", (e) => {
+    tossSound();
     headBtn.style.display = "none";
     e.target.setAttribute("disabled", true);
     e.target.style.cursor = "not-allowed";
