@@ -25,6 +25,7 @@ button {
   transition: 1s;
   cursor: pointer;
 }
+
 div[disabled] {
   pointer-events: none;
 }
@@ -48,7 +49,7 @@ header {
 }
 
 .start-point {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -308,7 +309,7 @@ header {
 
 /* game board part  */
 .game-part {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -357,9 +358,23 @@ header {
   grid-template-columns: repeat(3, 80px);
   grid-template-rows: repeat(3, 80px);
   gap: 5px;
-}
-.game-board-container {
   margin-top: 10px;
+  position: relative;
+}
+
+.game-board-container::before {
+  content: "";
+  position: absolute;
+  top: var(--line-top);
+  left: var(--line-left);
+  bottom: var(--line-bottom);
+  right: var(--line-right);
+  width: 5px;
+  height: var(--line-height, 0);
+  transform: var(--line-rotate, rotate(90deg));
+  background-color: #2d3436;
+  transition: height 500ms;
+  display: var(--line-show, none);
 }
 .game-board-container .box {
   display: flex;

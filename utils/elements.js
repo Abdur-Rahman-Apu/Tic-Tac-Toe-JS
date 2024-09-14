@@ -26,6 +26,7 @@ const playerName = document.querySelector(".player .player-name");
 const systemName = document.querySelector(".system-name");
 
 const gameBoardContainer = document.querySelector(".game-board-container");
+const sketchLine = document.querySelector(".game-board-container:before");
 
 const winnerPartContainer = document.querySelector(".winner-part");
 const winningMsg = document.querySelector(".winning-msg .win-msg");
@@ -51,6 +52,7 @@ export {
   player,
   playerImgContainer,
   playerName,
+  sketchLine,
   startBtn,
   startPointContainer,
   system,

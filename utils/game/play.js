@@ -19,7 +19,7 @@ const decideOfDisableDiv = (isDisable, elm) => {
   }
 };
 
-const updateDomAfterWin = () => {
+const updateDomAfterWin = (line) => {
   if (gameValues.isWinner) {
     winningMsg.textContent = "You Won!";
     winningImg.src = "assets/images/celebration.png";
@@ -43,22 +43,184 @@ const updateDomAfterWin = () => {
     }
     elm.textContent = "";
   });
+
+  styleBoxStyle("#dfe4ea", line);
+
+  lineCssStyle({
+    "--line-top": "null",
+    "--line-left": "null",
+    "--line-bottom": "null",
+    "--line-right": "null",
+    "--line-rotate": "null",
+    "--line-height": "null",
+    "--line-show": "0px",
+  });
+};
+
+const styleBoxStyle = (bgColor, line) => {
+  for (let boxNum of line) {
+    const style = {
+      backgroundColor: bgColor,
+    };
+
+    const boxElm = gameBoardContainer.querySelector(`div:nth-child(${boxNum})`);
+
+    Object.assign(boxElm.style, style);
+  }
+};
+
+const lineCssStyle = (newStyle) => {
+  for (const property in newStyle) {
+    gameBoardContainer.style.setProperty(property, newStyle[property]);
+  }
+};
+
+const sketchLineAddedIntoDom = (newStyle, line) => {
+  console.log("into line add into dom");
+
+  styleBoxStyle("#55efc4", line);
+
+  console.log(newStyle, "new style");
+
+  lineCssStyle(newStyle);
+};
+
+const sketchLineDraw = (player) => {
+  console.log("here");
+  const { possibleOutcome } = gameValues;
+
+  for (const value of possibleOutcome) {
+    const { result, line } = isThisWinnerLine(value, player);
+
+    console.log(result, line, "result", "line");
+
+    if (result) {
+      let basicStyle = {
+        "--line-height": "250px",
+        "--line-show": "block",
+        "--line-top": "0%",
+        "--line-left": "50%",
+      };
+
+      switch (line.toString()) {
+        case "1,2,3":
+          basicStyle = {
+            ...basicStyle,
+            "--line-top": "-32%",
+            "--line-left": "50%",
+            "--line-rotate": "rotate(90deg)",
+            "--line-bottom": "null",
+            "--line-right": "null",
+          };
+
+          break;
+
+        case "4,5,6":
+          basicStyle = {
+            ...basicStyle,
+            "--line-rotate": "rotate(90deg)",
+            "--line-bottom": "null",
+            "--line-right": "null",
+          };
+
+          break;
+
+        case "7,8,9":
+          delete basicStyle["--line-top"];
+          basicStyle = {
+            ...basicStyle,
+            "--line-bottom": "-35%",
+            "--line-left": "50%",
+            "--line-rotate": "rotate(90deg)",
+            "--line-top": "null",
+            "--line-right": "null",
+          };
+
+          break;
+
+        case "1,4,7":
+          basicStyle = {
+            ...basicStyle,
+            "--line-top": "10%",
+            "--line-left": "15%",
+            "--line-rotate": "rotate(0deg)",
+            "--line-bottom": "null",
+            "--line-right": "null",
+          };
+
+          break;
+
+        case "2,5,8":
+          basicStyle = {
+            ...basicStyle,
+            "--line-rotate": "rotate(0deg)",
+            "--line-bottom": "null",
+            "--line-right": "null",
+          };
+
+          break;
+
+        case "3,6,9":
+          basicStyle = {
+            ...basicStyle,
+            "--line-top": "0%",
+            "--line-right": "15%",
+            "--line-rotate": "rotate(0deg)",
+            "--line-bottom": "null",
+            "--line-left": "null",
+          };
+
+          break;
+
+        case "1,5,9":
+          basicStyle = {
+            ...basicStyle,
+            "--line-rotate": "rotate(-45deg)",
+            "--line-bottom": "null",
+            "--line-right": "null",
+          };
+
+          break;
+
+        case "3,5,7":
+          basicStyle = {
+            ...basicStyle,
+            "--line-rotate": "rotate(45deg)",
+            "--line-bottom": "null",
+            "--line-right": "null",
+          };
+
+          break;
+      }
+
+      sketchLineAddedIntoDom(basicStyle, line);
+      return line;
+    }
+  }
+};
+
+const isThisWinnerLine = (line, player) => {
+  const playerValues = [...player].sort();
+  let matched = 0;
+  for (const value of line) {
+    playerValues.includes(value) && matched++;
+  }
+  // console.log(matched, "matched");
+  if (matched === 3) {
+    return { result: true, line: line };
+  } else {
+    return { result: false };
+  }
 };
 
 const isWinner = (player) => {
-  const playerValues = [...player].sort();
   // console.log(playerValues, "player values");
 
   return gameValues.possibleOutcome.some((item) => {
-    let matched = 0;
-    for (const value of item) {
-      playerValues.includes(value) && matched++;
-    }
-    // console.log(matched, "matched");
-    if (matched === 3) {
+    const isMatched = isThisWinnerLine(item, player);
+
+    if (isMatched.result) {
       return true;
-    } else {
-      matched = 0;
     }
   });
 };
@@ -67,17 +229,19 @@ const decideWinner = (isPlayer) => {
   const { player, AI, emptyBoxes } = gameValues;
 
   console.log(isPlayer, "isPlayer");
-  if (!emptyBoxes.length) {
-    console.log("checking draw");
-    updateDomAfterWin();
-    return true;
-  }
+
   if (isPlayer && player.length > 2) {
     console.log("player with length > 2");
     // console.log(isWinner(player), "is winner");
     if (isWinner(player)) {
       gameValues.isWinner = true;
-      updateDomAfterWin();
+
+      const line = sketchLineDraw(player);
+
+      setTimeout(() => {
+        updateDomAfterWin(line);
+      }, 1000);
+
       return true;
     }
   }
@@ -87,9 +251,18 @@ const decideWinner = (isPlayer) => {
     console.log(isWinner(AI), "is winner");
     if (isWinner(AI)) {
       gameValues.isWinner = false;
-      updateDomAfterWin();
+      const line = sketchLineDraw(AI);
+      setTimeout(() => {
+        updateDomAfterWin(line);
+      }, 1000);
       return true;
     }
+  }
+
+  if (!emptyBoxes.length) {
+    console.log("checking draw");
+    updateDomAfterWin();
+    return true;
   }
 };
 
@@ -158,16 +331,18 @@ const play = () => {
         gameValues.player.length > 2 && decideWinner(true),
         "decide winner player"
       );
-      if (gameValues.player.length > 2 && decideWinner(true)) return;
+      if (gameValues.player.length > 2 && decideWinner(true)) {
+        return;
+      } else {
+        console.log(gameValues.emptyBoxes, "Player After");
 
-      console.log(gameValues.emptyBoxes, "Player After");
+        gameValues.turn = false;
 
-      gameValues.turn = false;
-
-      decideOfDisableDiv(true, parentElm);
-      decideOfDisableDiv(true, targetElm);
-      setActiveBorder();
-      autoPlay();
+        decideOfDisableDiv(true, parentElm);
+        decideOfDisableDiv(true, targetElm);
+        setActiveBorder();
+        autoPlay();
+      }
     }
   });
 };
