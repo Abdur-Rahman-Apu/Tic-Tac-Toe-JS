@@ -15,3 +15,5 @@ const clapSound = () => {
 const errorSound = () => {
   setAudio("assets/audio/error.mp3");
 };
+
+export { clapSound, clickSound, errorSound };

@@ -9,18 +9,22 @@ import {
   playerName,
   systemName,
 } from "../elements.js";
+import { clickSound, errorSound } from "../sounds.js";
 import { gameValues } from "../variables.js";
 import setActiveBorder from "./activeBorder.js";
 import { autoPlay } from "./play.js";
 
 const editPart = () => {
   nameField.addEventListener("keyup", (e) => {
+    clickSound();
     const value = e.target.value;
     console.log(value, "Value");
     gameValues.name = value.trim();
   });
 
   gameModeName.addEventListener("click", () => {
+    clickSound();
+
     const decreaseHeightStyle = {
       display: "none",
       height: 0,
@@ -42,6 +46,7 @@ const editPart = () => {
   modesContainer.addEventListener("click", (e) => {
     console.log(e.target);
     if (e.target.tagName === "P") {
+      clickSound();
       gameModeName.textContent = e.target.textContent;
       gameValues.mode = e.target.textContent;
       modesContainer.style.height = 0;
@@ -51,8 +56,12 @@ const editPart = () => {
   });
 
   editModeBtn.addEventListener("click", () => {
+    clickSound();
     if (!gameValues.name) {
-      alert("Please enter valid name");
+      errorSound();
+      setTimeout(() => {
+        alert("Please enter valid name");
+      }, 1000);
     } else {
       if (gameValues.mode === "Medium") {
         gameValues["aiMode"] = 2;
