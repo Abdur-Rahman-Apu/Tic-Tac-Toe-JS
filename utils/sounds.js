@@ -36,6 +36,10 @@ const tossSound = () => {
   setAudio("assets/audio/toss.mp3");
 };
 
+const tieSound = () => {
+  setAudio("assets/audio/tie.wav");
+};
+
 export {
   circleSound,
   clickSound,
@@ -43,6 +47,7 @@ export {
   errorSound,
   lineSound,
   loseSound,
+  tieSound,
   tossSound,
   winSound,
 };

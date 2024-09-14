@@ -9,6 +9,7 @@ import {
   tailBtn,
   winnerPartContainer,
 } from "../elements.js";
+import { clickSound } from "../sounds.js";
 import { gameValues, initialValues, resetValues } from "../variables.js";
 
 const changeGameValue = (resetObj) => {
@@ -22,6 +23,7 @@ const changeGameValue = (resetObj) => {
 const endPart = () => {
   // play again functionalities
   playAgainBtn.addEventListener("click", () => {
+    clickSound();
     changeGameValue({
       ...deepCopy(gameValues),
       ...deepCopy(resetValues),
@@ -34,6 +36,7 @@ const endPart = () => {
 
   //   reset functionalities
   exitBtn.addEventListener("click", () => {
+    clickSound();
     changeGameValue({
       ...deepCopy(initialValues),
     });

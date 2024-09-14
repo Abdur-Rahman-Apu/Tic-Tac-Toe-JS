@@ -5,7 +5,13 @@ import {
   winningImg,
   winningMsg,
 } from "../elements.js";
-import { circleSound, crossSound, loseSound, winSound } from "../sounds.js";
+import {
+  circleSound,
+  crossSound,
+  loseSound,
+  tieSound,
+  winSound,
+} from "../sounds.js";
 import { gameValues } from "../variables.js";
 import setActiveBorder from "./activeBorder.js";
 import easyMode from "./mode/easy.js";
@@ -44,18 +50,19 @@ const updateDomAfterWin = (line) => {
     }
     elm.textContent = "";
   });
+  if (line) {
+    styleBoxStyle("#dfe4ea", line);
 
-  styleBoxStyle("#dfe4ea", line);
-
-  lineCssStyle({
-    "--line-top": "null",
-    "--line-left": "null",
-    "--line-bottom": "null",
-    "--line-right": "null",
-    "--line-rotate": "null",
-    "--line-height": "null",
-    "--line-show": "0px",
-  });
+    lineCssStyle({
+      "--line-top": "null",
+      "--line-left": "null",
+      "--line-bottom": "null",
+      "--line-right": "null",
+      "--line-rotate": "null",
+      "--line-height": "null",
+      "--line-show": "0px",
+    });
+  }
 };
 
 const styleBoxStyle = (bgColor, line) => {
@@ -265,6 +272,7 @@ const decideWinner = (isPlayer) => {
   if (!emptyBoxes.length) {
     console.log("checking draw");
     updateDomAfterWin();
+    tieSound();
     return true;
   }
 };
