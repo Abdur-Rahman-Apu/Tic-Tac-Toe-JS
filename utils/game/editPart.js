@@ -69,10 +69,11 @@ const editPart = () => {
       editContainer.style.display = "none";
       gamePartContainer.style.display = "flex";
       finalModeName.textContent = gameValues.mode;
+      console.log(gameValues.isTossWon, "tosswon");
       playerName.textContent = `${gameValues.name}(${
-        gameValues.tossWon ? "O" : "X"
+        gameValues.isTossWon ? "O" : "X"
       })`;
-      systemName.textContent += `(${gameValues.tossWon ? "X" : "O"})`;
+      systemName.textContent = `AI(${gameValues.isTossWon ? "X" : "O"})`;
       setActiveBorder();
       !gameValues.isTossWon && autoPlay();
     }

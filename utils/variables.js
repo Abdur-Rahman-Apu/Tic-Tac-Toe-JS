@@ -2,13 +2,13 @@ import deepCopy from "./deepCopy.js";
 
 const initialValues = {
   coin: null,
-  isTossWon: true,
+  isTossWon: null,
   name: "Player",
   mode: "Easy",
   isModesOpen: false,
-  turn: true,
-  playerSymbol: "O",
-  AISymbol: "X",
+  turn: null,
+  playerSymbol: "",
+  AISymbol: "",
   emptyBoxes: [1, 2, 3, 4, 5, 6, 7, 8, 9],
   possibleOutcome: [
     [1, 2, 3],
