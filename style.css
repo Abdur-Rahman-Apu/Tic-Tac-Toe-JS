@@ -196,7 +196,7 @@ header {
 
 /* edit part  */
 .edit-part {
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
@@ -214,14 +214,14 @@ header {
 
 .edit-name label {
   display: block;
-  font-size: 1.2rem;
-  color: #f7f1e3;
+  font-size: 1.4rem;
+  color: #fff;
   margin-bottom: 8px;
 }
 
 .edit-name input {
   padding: 8px;
-  font-family: "#fd79a8", sans-serif;
+  font-family: "Poetsen One", sans-serif;
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -270,7 +270,7 @@ header {
 
 .modes {
   width: fit-content;
-  background-color: #d1ccc0;
+  background-color: #91eccf;
   padding: 15px;
   margin: 0 auto;
   font-size: 1.3rem;
@@ -298,18 +298,13 @@ header {
 }
 
 .modes p:hover {
-  background: #474787;
+  background: #333635;
   color: #fff;
 }
 
-/* .game-mode-name:hover ~ .modes {
-  display: block;
-  height: auto;
-} */
-
 /* game board part  */
 .game-part {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;

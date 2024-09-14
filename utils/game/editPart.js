@@ -7,6 +7,7 @@ import {
   modesContainer,
   nameField,
   playerName,
+  systemName,
 } from "../elements.js";
 import { gameValues } from "../variables.js";
 import setActiveBorder from "./activeBorder.js";
@@ -30,13 +31,9 @@ const editPart = () => {
     };
 
     if (gameValues.isModesOpen) {
-      // modesContainer.style.height = 0;
-      // modesContainer.style.display = "none";
       Object.assign(modesContainer.style, decreaseHeightStyle);
       gameValues.isModesOpen = false;
     } else {
-      // modesContainer.style.height = "auto";
-      // modesContainer.style.display = "block";
       Object.assign(modesContainer.style, increaseHeightStyle);
       gameValues.isModesOpen = true;
     }
@@ -63,7 +60,10 @@ const editPart = () => {
       editContainer.style.display = "none";
       gamePartContainer.style.display = "flex";
       finalModeName.textContent = gameValues.mode;
-      playerName.textContent = gameValues.name;
+      playerName.textContent = `${gameValues.name}(${
+        gameValues.tossWon ? "O" : "X"
+      })`;
+      systemName.textContent += `(${gameValues.tossWon ? "X" : "O"})`;
       setActiveBorder();
       !gameValues.isTossWon && autoPlay();
     }

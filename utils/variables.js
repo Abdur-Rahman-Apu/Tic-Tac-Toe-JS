@@ -3,7 +3,7 @@ import deepCopy from "./deepCopy.js";
 const initialValues = {
   coin: null,
   isTossWon: true,
-  name: "Player 1",
+  name: "Player",
   mode: "Easy",
   isModesOpen: false,
   turn: true,
