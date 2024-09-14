@@ -5,6 +5,7 @@ import {
   winningImg,
   winningMsg,
 } from "../elements.js";
+import { circleSound, crossSound, loseSound, winSound } from "../sounds.js";
 import { gameValues } from "../variables.js";
 import setActiveBorder from "./activeBorder.js";
 import easyMode from "./mode/easy.js";
@@ -240,7 +241,8 @@ const decideWinner = (isPlayer) => {
 
       setTimeout(() => {
         updateDomAfterWin(line);
-      }, 1000);
+        winSound();
+      }, 1500);
 
       return true;
     }
@@ -254,7 +256,8 @@ const decideWinner = (isPlayer) => {
       const line = sketchLineDraw(AI);
       setTimeout(() => {
         updateDomAfterWin(line);
-      }, 1000);
+        loseSound();
+      }, 1500);
       return true;
     }
   }
@@ -277,6 +280,8 @@ export const autoPlay = () => {
 
   console.log(value, "value");
   const targetElm = gameBoardContainer.querySelector(`div:nth-child(${value})`);
+
+  playerSymbolAudioEffect(gameValues.AISymbol);
   targetElm.textContent = AISymbol;
 
   const boxNumber = +targetElm.dataset.box;
@@ -309,18 +314,20 @@ const removeFromEmptySlots = (slot) => {
   console.log(gameValues.emptyBoxes, "Player after");
 };
 
+const playerSymbolAudioEffect = (symbol) => {
+  symbol.toLowerCase() === "o" ? circleSound() : crossSound();
+};
+
 const play = () => {
   gameBoardContainer.addEventListener("click", (e) => {
     const isDisabled = e.target.textContent;
-
-    // console.log(e.target, "disabled");
-    // console.log(!isDisabled, "is not disabled");
 
     if (!isDisabled) {
       const parentElm = e.currentTarget;
       const targetElm = e.target;
       const boxNumber = targetElm.dataset.box;
 
+      playerSymbolAudioEffect(gameValues.playerSymbol);
       targetElm.textContent = gameValues.playerSymbol;
 
       gameValues.player.push(+boxNumber);

@@ -196,7 +196,7 @@ header {
 
 /* edit part  */
 .edit-part {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   gap: 30px;
@@ -304,7 +304,7 @@ header {
 
 /* game board part  */
 .game-part {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
