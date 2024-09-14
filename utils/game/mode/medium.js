@@ -1,5 +1,5 @@
 import { gameValues } from "../../variables.js";
-import aiDecide from "./AiDecide.js";
+import aiDecide from "./aiDecide.js";
 import easyMode from "./easy.js";
 
 const mediumMode = () => {
