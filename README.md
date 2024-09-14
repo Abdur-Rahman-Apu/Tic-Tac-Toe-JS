@@ -21,9 +21,9 @@ This is an interactive, responsive Tic Tac Toe game built using HTML, CSS, and J
 
 - <b>Sound Effects</b>:
   - 🎵 <b>Winning/Losing/Draw Sounds</b>: Unique sound effects for different outcomes.
-- 🖊️ <b>Pencil Sketch Sounds</b>: When drawing O or X, enjoy the sound of pencil sketches.
-- 🎲 <b>Toss Sound</b>: A sound for the coin toss.
-- 🔘 <b>Button Clicks</b>: Button click feedback sounds.
+  - 🖊️ <b>Pencil Sketch Sounds</b>: When drawing O or X, enjoy the sound of pencil sketches.
+  - 🎲 <b>Toss Sound</b>: A sound for the coin toss.
+  - 🔘 <b>Button Clicks</b>: Button click feedback sounds.
 
 ## Screenshots
 
@@ -68,4 +68,4 @@ This project was created as part of the [JavaScript Ninja Bootcamp](https://webd
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
